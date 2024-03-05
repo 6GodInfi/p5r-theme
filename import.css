@@ -113,7 +113,7 @@ main[class*="chatContent"]::before {
   right: 0;
   background: rgba(28, 28, 28, 0.866) !important;
   background-size: 100% 100% !important;
-  opacity: 0.9;
+  opacity: 0.1;
   /* Adjust transparency */
   z-index: 0;
 }
