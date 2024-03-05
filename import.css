@@ -6,33 +6,33 @@
 /* Closest to ransom note font I could find. It doesn't support special characters though, ffs */
 @font-face {
   font-family: 'shoplifter';
-  src: url('https://6GodInfi.github.io/p5r-discord-theme/shoplifter.ttf');
+  src: url('https://6GodInfi.github.io/p5r-theme/shoplifter.ttf');
 }
 
 /* Almost as good as shoplifter in terms of nailing the look, but it has way better support for characters */
 @font-face {
   font-family: 'fanransom';
-  src: url('https://alanmun.github.io/p5r-discord-theme/Persona5FanRansom.ttf');
+  src: url('https://6GodInfi.github.io/p5r-theme/Persona5FanRansom.ttf');
 }
 
 /* Softer, informal persona font */
 @font-face {
   font-family: "personified";
-  src: url("https://alanmun.github.io/p5r-discord-theme/PersonifiedUXRegular.ttf");
+  src: url("https://6GodInfi.github.io/p5r-theme/PersonifiedUXRegular.ttf");
   font-weight: 500;
 }
 
 /* Idk its like personified but bolder? I use it for date dividers... */
 @font-face {
   font-family: "New P5";
-  src: url("https://alanmun.github.io/p5r-discord-theme/P5Alt.ttf");
+  src: url("https://6GodInfi.github.io/p5r-theme/P5Alt.ttf");
   font-weight: 500;
 }
 
 /* Someone on HarryType-C server sent me this, its great at replicating the system menu and popup fonts in game */
 @font-face {
   font-family: "system-and-popups";
-  src: url("https://alanmun.github.io/p5r-discord-theme/optimanova.ttf");
+  src: url("https://6GodInfi.github.io/p5r-theme/optimanova.ttf");
   font-weight: 100;
 }
 
@@ -144,7 +144,7 @@ div[aria-label="Close"] {
 
 /* Discord logo */
 [class^="wordmarkWindows"][class^="wordmark"] {
-  background: url("https://alanmun.github.io/p5r-discord-theme/discord-inverted-high-quality-transparent.png");
+  background: url("https://6GodInfi.github.io/p5r-theme/discord-inverted-high-quality-transparent.png");
   background-size: 100% 90%;
   background-repeat: no-repeat;
   left: 5px;
@@ -165,7 +165,7 @@ div[aria-label="Close"] {
 }
 
 div[aria-roledescription="Message"] div div{
-  background-image: url("https://alanmun.github.io/p5r-discord-theme/Chat.svg");
+  background-image: url("https://6GodInfi.github.io/p5r-theme/Chat.svg");
   background-repeat: no-repeat;
   background-size: 200px 100px;
   background-position-x: 5%;
@@ -177,7 +177,7 @@ div[aria-roledescription="Message"] div div{
 
 
 /* div[aria-roledescription="Message"].groupStart-3Mlgv1 div div span{
-  background-image: url("https://alanmun.github.io/p5r-discord-theme/Chat.svg");
+  background-image: url("https://6GodInfi.github.io/p5r-theme/Chat.svg");
   background-repeat: no-repeat;
   background-size: 500% 500%;
   background-position-x: 0;
@@ -401,7 +401,7 @@ button[aria-label="User Settings"] {
 
 .datePicker-70cO23 .react-datepicker {
   /* background: #000 !important; */
-  background: #000 url("https://alanmun.github.io/p5r-discord-theme/calendar.png") center / cover !important;
+  background: #000 url("https://6GodInfi.github.io/p5r-theme/calendar.png") center / cover !important;
 }
 
 .datePicker-70cO23 .react-datepicker .react-datepicker__header {
@@ -547,7 +547,7 @@ input[aria-label="Quick switcher"] {
 
 /* add notification icon when someone dms you */
 [class*="lowerBadge"] {
-  background: url(https://alanmun.github.io/p5r-discord-theme/notification.gif);
+  background: url(https://6GodInfi.github.io/p5r-theme/notification.gif);
   filter: drop-shadow(0 0 0.5px black);
   background-size: contain;
   background-repeat: no-repeat;
@@ -633,7 +633,7 @@ div[aria-label="Servers"]> :nth-child(odd) div[class*="blobContainer"] > div > s
   animation: jiggleInverted 0.6s infinite;
 }
 div[aria-label="Servers"]> :nth-child(odd) div[class*="blobContainer"] > div > svg {
-  background: url('https://alanmun.github.io/p5r-discord-theme/spikyCircleMenuButton.svg');
+  background: url('https://6GodInfi.github.io/p5r-theme/spikyCircleMenuButton.svg');
   background-size: 98%;
   background-repeat: no-repeat;
   background-position: 50% 100%;
@@ -652,7 +652,7 @@ div[aria-label="Servers"]> :nth-child(even) div[class*="blobContainer"] > div > 
 div[aria-label="Servers"]> :nth-child(even) div[class*="blobContainer"] > div > svg {
   margin-top: 3px;
   width: 50px;
-  background: url('https://alanmun.github.io/p5r-discord-theme/spikyCircleMenuButton.svg');
+  background: url('https://6GodInfi.github.io/p5r-theme/spikyCircleMenuButton.svg');
   background-size: 98%;
   background-repeat: no-repeat;
   background-position: 50% 100%;
@@ -705,7 +705,7 @@ div[aria-label="Servers"]>[class*="wrapper"] div[aria-expanded="true"] {
 
 /* Direct Messages icon */
 div[aria-label="Direct Messages"] > div[class*="childWrapper"] {
-  background: rgba(0, 0, 0, 0) url("https://alanmun.github.io/p5r-discord-theme/im.png") no-repeat center / 120%;
+  background: rgba(0, 0, 0, 0) url("https://6GodInfi.github.io/p5r-theme/im.png") no-repeat center / 120%;
   background-color: transparent !important;
 }
 div[aria-label="Direct Messages"] > div[class*="childWrapper"]:hover {
@@ -830,7 +830,7 @@ div[aria-label="Members"]>h3.membersGroup-2eiWxl:nth-child(odd)>span {
 /* Friends Page Main Area */
 
 [class*="peopleList"] [class*="peopleListItem"] [class*="avatar"] :not([class*="userInfo"]) svg foreignObject {
-  mask: url("https://alanmun.github.io/p5r-discord-theme/im.png");
+  mask: url("https://6GodInfi.github.io/p5r-theme/im.png");
 }
 
 [class*="peopleList"] [class*="peopleListItem"] [class*="actions"] [aria-label="Message"] {
@@ -901,7 +901,7 @@ div[aria-label="Members"]>h3.membersGroup-2eiWxl:nth-child(odd)>span {
 
 /* Profile picture box inside of any chat (dm or server) */
 /* li .header-2jRmjb {
-  background-image: url('https://alanmun.github.io/p5r-discord-theme/PFP.svg');
+  background-image: url('https://6GodInfi.github.io/p5r-theme/PFP.svg');
   background-repeat: no-repeat;
   background-position: -150px 0px;
   z-index: 5;
@@ -1234,7 +1234,7 @@ path[class*="attachButtonPlus"]:hover {
 /* The new messages are available popup */
 /* [class*="newMessagesBar"] {
   border-radius: 1px;
-  background: #101010 url("https://alanmun.github.io/p5r-discord-theme/notification.gif") no-repeat;
+  background: #101010 url("https://6GodInfi.github.io/p5r-theme/notification.gif") no-repeat;
   background-position-y: 3px;
   background-position-x: 10px;
   background-size: 1.4%;
@@ -1394,7 +1394,7 @@ path[class*="attachButtonPlus"]:hover {
 
 [class*="userProfileInner"][class*="userPanelInner"],
 [class*="userPopoutInner"][class*="userProfileInner"] {
-  background-image: url("https://alanmun.github.io/p5r-discord-theme/p5star.gif");
+  background-image: url("https://6GodInfi.github.io/p5r-theme/p5star.gif");
   background-position: center center;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0)
@@ -1422,7 +1422,7 @@ input[class*="inputDefault"][class*="input"][class*="messageInput"] {
 
 /* User profile as displayed in My Account within User Settings */
 [class*="accountProfileCard"] {
-  background-image: url("https://alanmun.github.io/p5r-discord-theme/p5star.gif");
+  background-image: url("https://6GodInfi.github.io/p5r-theme/p5star.gif");
   background-position: center center;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0)
