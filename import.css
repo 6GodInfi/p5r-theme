@@ -112,8 +112,9 @@ main[class*="chatContent"]::before {
   bottom: 0;
   right: 0;
   background: rgba(28, 28, 28, 0.866) !important;
+  background-image: url(https://clearvision.github.io/images/sapphire.jpg);
   background-size: 100% 100% !important;
-  opacity: 0.1;
+  opacity: 0.9;
   /* Adjust transparency */
   z-index: 0;
 }
