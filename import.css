@@ -1,0 +1,1818 @@
+
+/* Import Varela Round Font */
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"); 
+
+
+/* Closest to ransom note font I could find. It doesn't support special characters though, ffs */
+@font-face {
+  font-family: 'shoplifter';
+  src: url('https://alanmun.github.io/p5r-discord-theme/shoplifter.ttf');
+}
+
+/* Almost as good as shoplifter in terms of nailing the look, but it has way better support for characters */
+@font-face {
+  font-family: 'fanransom';
+  src: url('https://alanmun.github.io/p5r-discord-theme/Persona5FanRansom.ttf');
+}
+
+/* Softer, informal persona font */
+@font-face {
+  font-family: "personified";
+  src: url("https://alanmun.github.io/p5r-discord-theme/PersonifiedUXRegular.ttf");
+  font-weight: 500;
+}
+
+/* Idk its like personified but bolder? I use it for date dividers... */
+@font-face {
+  font-family: "New P5";
+  src: url("https://alanmun.github.io/p5r-discord-theme/P5Alt.ttf");
+  font-weight: 500;
+}
+
+/* Someone on HarryType-C server sent me this, its great at replicating the system menu and popup fonts in game */
+@font-face {
+  font-family: "system-and-popups";
+  src: url("https://alanmun.github.io/p5r-discord-theme/optimanova.ttf");
+  font-weight: 100;
+}
+
+:root {
+  --theme: var(--p5-primary-fix);
+
+  /* New Main Color */
+  --p5-primary: radial-gradient(circle, #c31e1e, #af0000);
+  --p5-primary-fix: #af0000; /* I came back to find p5-primary broken? radial-gradient specifically just seems to not function anymore. */
+  --p5-primary-accent: rgba(220, 20, 60, 0.9);
+  /* its crimson with alpha */
+  --hp-green: rgba(0, 221, 178, 0.90);
+  --mp-pink: rgba(255, 102, 237, 0.867);
+  --p5-blue: rgba(64, 193, 251, 0.90);
+  --p5-blue-hovered: rgba(34, 163, 221, 0.90);
+  --p5-system: rgba(43, 43, 43, 0.866);
+
+  /* Standard Variables */
+
+  --primary-dark: #131313;
+  --primary-alt: #111;
+
+  /* Backgrounds */
+  --background-primary: #101010;
+  --background-secondary: var(--primary-alt);
+  --background-secondary-alt: var(--primary-alt);
+  --background-accent: var(--theme);
+  --background-tertiary: var(--theme);
+  --background-folder: rgba(96, 125, 139, 0.4);
+
+  /* Channel Text Area */
+  --channeltextarea-background: #fff;
+
+  /* Input backgrounds, similar to above channel text area */
+  --input-background: #fff;
+
+  /* Scrollbar */
+  --scrollbar-thin-thumb: var(--theme);
+  --scrollbar-auto-thumb: var(--theme);
+  --scrollbar-auto-track: #222;
+
+  /* Header */
+  --header-primary: #fff !important;
+  --header-font-family: 'New P5';
+
+  /* Text */
+  --text-link: var(--p5-blue);
+  --text-muted: #fff;
+  --text-on-white-background: #000;
+  
+  /* Below was a cool idea but it leads to too many misfires and additional CSS I need to write to correct a lot of things */
+  /* Its just not worth it to rename existing vars, it breaks too many things even if it appears to fix a lot */
+  /* --text-normal: var(--text-on-dark-background); */
+  --text-on-dark-background: #fff;
+
+  /* Focus */
+  -focus-primary: #fff;
+}
+
+/* Below is experimenting with making everything Varela with 2 default fonts as backup.
+  Unfortunately though it visually makes no difference basically, besides altering 
+  size of smaller subtexts, which is undesired.
+*/
+body {
+  font-family: "Varela Round", "gg sans", "Noto Sans";
+}
+
+h2, h1 {
+  font-family: 'system-and-popups' !important;
+}
+
+/* Applies a background to the chat window. I use ::before to control opacity separately (only on background image) */
+main[class*="chatContent"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(28, 28, 28, 0.866) !important;
+  background-size: 100% 100% !important;
+  opacity: 0.9;
+  /* Adjust transparency */
+  z-index: 0;
+}
+
+/* the top bar containing min/max/X out */
+[class^="typeWindows"] {
+  height: 24px;
+}
+
+/* minimize button */
+div[aria-label="Minimize"] {
+  top: -3px;
+  height: 27px;
+}
+
+/* maximize button */
+div[aria-label="Maximize"] {
+  top: -3px;
+  height: 27px;
+}
+
+/* X out button to quit app */
+div[aria-label="Close"] {
+  top: -3px;
+  height: 27px;
+}
+
+/* Discord logo */
+[class^="wordmarkWindows"][class^="wordmark"] {
+  background: url("https://alanmun.github.io/p5r-discord-theme/discord-inverted-high-quality-transparent.png");
+  background-size: 100% 90%;
+  background-repeat: no-repeat;
+  left: 5px;
+  top: 4px;
+  padding-right: 30px;
+  filter: brightness(0) invert(1);
+}
+
+/* Old discord logo hidden */
+[class^="wordmarkWindows"][class^="wordmark"]>svg {
+  visibility: hidden;
+}
+
+
+/* div[aria-roledescription="Message"] div div span{
+  line-height: 400% !important;
+  padding-left: 2%;
+}
+
+div[aria-roledescription="Message"] div div{
+  background-image: url("https://alanmun.github.io/p5r-discord-theme/Chat.svg");
+  background-repeat: no-repeat;
+  background-size: 200px 100px;
+  background-position-x: 5%;
+  background-position-y: center;
+  padding-left: -10% !important;
+} */
+
+/* ^^^^^^^^^^ where I left off ^^^^^^^^^ */
+
+
+/* div[aria-roledescription="Message"].groupStart-3Mlgv1 div div span{
+  background-image: url("https://alanmun.github.io/p5r-discord-theme/Chat.svg");
+  background-repeat: no-repeat;
+  background-size: 500% 500%;
+  background-position-x: 0;
+  background-position-y: -50000;
+
+  padding-top: 2%;
+} */
+
+
+/* div[aria-roledescription="Message"]::before,
+div[aria-roledescription="Message"]::after {
+  content: "";
+  position: absolute;
+  transform-origin: 0% 0%;
+}
+
+div[aria-roledescription="Message"]::before {
+  top: 0px;
+  left: 8%;
+  width: 20%;
+  height: 50px;
+  background-color: white;
+  transform: skew(-19deg);
+  z-index: -1;
+}
+
+div[aria-roledescription="Message"]::after {
+  top: 4%;
+  left: 8.25%;
+  width: 19%;
+  height: 45px;
+  background-color: black;
+  transform: skew(-12deg);
+  z-index: -1;
+} */
+
+/* Generic popups */
+[class*="popout"] {
+  border-radius: 1px;
+  background-color: #222;
+}
+[class*="popout"] button {
+  border-radius: 1px;
+  background-color: var(--p5-blue) !important;
+}
+[class*="popout"] button:hover {
+  background-color: var(--p5-blue-hovered) !important;
+}
+
+/* Used in the NEW badge icon */
+[class*="textBadge"]{
+  border-radius: 1px;
+  background-color: var(--p5-blue-hovered) !important;
+}
+
+/* Active Now right column section in Friends tab */
+[class*="itemCard"] {
+  border-radius: 0;
+  border: 0;
+  background: var(--p5-system);
+}
+
+[class*="itemCard"]:hover {
+  background: rgba(33, 33, 33, 0.866) !important; /* This is just p5-system but toned down, can't modify off existing rgbas in css unfortunately */
+}
+
+[class*="itemCard"][class*="active-"] {
+  background: rgba(28, 28, 28, 0.75) !important;
+}
+
+[class*="itemCard"] span {
+  /* Affects the text saying what they're doing (Dota 2 - 52 mins) */
+  color: var(--text-on-dark-background);
+}
+
+/* Top Area */
+
+[class*="chat"] [class*="toolbar"] [class*="clickable"] {
+  background: #000;
+  border-radius: 2px;
+  border: 2px solid #fff;
+  margin: 0 2px;
+  transform: rotate(4deg);
+}
+
+[class*="chat"] [class*="toolbar"] [class*="clickable"]:nth-child(even) {
+  transform: rotate(-4deg);
+}
+
+[class*="chat"] [class*="toolbar"] [class*="clickable"] [class*="icon"] {
+  padding: 1px;
+  box-sizing: border-box;
+  width: 20px;
+  height: auto;
+  color: #fff;
+}
+
+/* Hide this svg that creates an ugly red line near bottom of Inbox toolbar button */
+[class*="chat"] [class*="toolbar"] div[aria-label="Inbox"] span[class*="iconBadge"] {
+  visibility: hidden;
+}
+
+[class*="chat"] [class*="toolbar"] [class*="clickable"][class*="selected"] {
+  background: var(--background-accent);
+}
+
+[class*="chat"] [class*="toolbar"] [class*="clickable"]:hover {
+  background: #fff;
+}
+
+[class*="chat"] [class*="toolbar"] [class*="clickable"]:hover [class*="icon"] {
+  color: var(--p5-system);
+}
+
+.theme-dark [class*="lookFilled"][class*="colorPrimary"] {
+  border-radius: 1px;
+  background-color: var(--theme);
+  color: #fff;
+}
+
+.theme-dark [class*="lookFilled"][class*="colorPrimary"]:hover {
+  background: #fff;
+  color: var(--theme);
+}
+
+/* BEGIN Can't tell what these guys are doing... their name seems completely diff now*/
+[class*="queryContainer"] {
+  background: #000;
+  color: #fff;
+}
+
+.queryContainer-ZunrLZ.focused-2FU0YH {
+  background: rgb(12, 12, 12);
+}
+
+.queryContainer-ZunrLZ .queryText-j8z984 strong {
+  background: #fff;
+  color: var(--mp-pink);
+  padding: 5px;
+}
+
+.queryContainer-ZunrLZ .keybindShortcut-3zF1P9 span {
+  background: var(--theme);
+  color: #fff;
+}
+
+.queryContainer-ZunrLZ .keybindShortcut-3zF1P9:active span {
+  background: #fff;
+  color: var(--theme);
+}
+/* END */
+
+.resultsGroup-1BPR25 {
+  border-radius: 2px;
+  border: 2px solid #fff;
+  background: #000;
+}
+
+.resultsGroup-1BPR25 .option-2KkUJO::after {
+  background: linear-gradient(to left, #000 80%, transparent);
+}
+
+.resultsGroup-1BPR25 .option-2KkUJO .plusIcon-2V7coV {
+  color: var(--mp-pink);
+}
+
+/* Mini-user dock under channels */
+div[class*="flex"][class*="horizontal"][class*="justifyStart"][class*="alignStretch"][class*="noWrap"] > button {
+  border-radius: 2px;
+  border: 2px solid #fff;
+}
+div[class*="flex"][class*="horizontal"][class*="justifyStart"][class*="alignStretch"][class*="noWrap"] path:nth-child(even) {
+  fill: white;
+  transform: scale(1) skewX(-2deg);
+}
+div[class*="flex"][class*="horizontal"][class*="justifyStart"][class*="alignStretch"][class*="noWrap"] path:nth-child(odd) {
+  fill: white;
+  transform: scale(1) skewX(2deg);
+}
+section[aria-label="User area"] div[class*="flex"][class*="horizontal"][class*="justifyStart"][class*="alignStretch"][class*="noWrap"]>:nth-child(even) {
+  transform: scale(0.9) skewX(2deg);
+}
+section[aria-label="User area"] div[class*="flex"][class*="horizontal"][class*="justifyStart"][class*="alignStretch"][class*="noWrap"]>:nth-child(odd) {
+  transform: scale(0.9) skewX(-2deg);
+}
+
+/* Mute button in dock */
+button[aria-label="Mute"] {
+  background: var(--mp-pink);
+  /* p5 pink var, conv'd to rgba */
+}
+
+/* Deafen button in dock */
+button[aria-label="Deafen"] {
+  background: var(--hp-green);
+}
+
+/* Settings cog button in dock */
+button[aria-label="User Settings"] {
+  background: var(--p5-blue);
+}
+
+/* Date */
+
+/* Experimenting with New P5 for hovered over timestamps, idk if it improves anything rly */
+/* .timestampVisibleOnHover-9PEuZS {
+  font-family: 'New P5';
+  font-size: 0.65em !important;
+  font-weight: lighter !important;
+} */
+
+/* Everything below this for date is from og author and probably broken code */
+
+.datePicker-70cO23 {
+  background: #000 !important;
+}
+
+.datePicker-70cO23 .calendarPicker-sDhzdi {
+  background: #000 !important;
+}
+
+.datePicker-70cO23 .react-datepicker {
+  /* background: #000 !important; */
+  background: #000 url("https://alanmun.github.io/p5r-discord-theme/calendar.png") center / cover !important;
+}
+
+.datePicker-70cO23 .react-datepicker .react-datepicker__header {
+  border: none;
+  background: none;
+}
+
+.datePicker-70cO23 .react-datepicker .react-datepicker__header .react-datepicker__day-name {
+  background: #000;
+  padding: 5px 0;
+  color: #fff;
+  font-weight: 600;
+}
+
+.datePicker-70cO23 .react-datepicker .react-datepicker__month .react-datepicker__day {
+  background: #000;
+}
+
+.datePicker-70cO23 .react-datepicker .react-datepicker__month .react-datepicker__day:hover {
+  background: var(--theme);
+  color: #fff;
+}
+
+.datePicker-70cO23 .react-datepicker .react-datepicker__month .react-datepicker__day.react-datepicker__day--selected {
+  color: #fff;
+}
+
+.datePicker-70cO23 .react-datepicker .react-datepicker__month .react-datepicker__day.react-datepicker__day--selected:hover {
+  background: var(--p5-blue);
+}
+
+.datePicker-70cO23 .react-datepicker .react-datepicker__month .react-datepicker__day.react-datepicker__day--selected::after {
+  background: var(--p5-blue);
+}
+
+.datePicker-70cO23 .react-datepicker .react-datepicker__month .react-datepicker__day .react-datepicker__day--selected+.datePicker-70cO23 .react-datepicker .react-datepicker__month .react-datepicker__day {
+  color: green;
+}
+
+.searchFilter-2UfsDk span {
+  color: #fff;
+  background: var(--mp-pink);
+  padding: 0 2px;
+  font-weight: 700;
+}
+
+.searchAnswer-23w-CH span {
+  color: #fff;
+  background: var(--hp-green);
+  padding: 0 2px;
+  font-weight: 700;
+}
+
+.datePickerHint-17MnA8 .hintValue-1x-flY {
+  background: var(--hp-green) !important;
+  color: #fff;
+  font-weight: 700 !important;
+}
+
+/* BetterDiscord blue notifications */
+.bd-notice:first-child {
+  border-radius: 0;
+  background: white;
+  /* border: solid black 3px; */
+  color: black;
+  width: 90vw;
+  margin-left: 1vw;
+  transform: skewX(5deg);
+}
+
+.bd-notice:first-child>* {
+  color: black;
+}
+
+#bd-notices {
+  transform: rotate(-10deg) skewY(10deg)
+}
+
+/* Remove corner radius for corner just under Discord logo at top left */
+div[class*="base"] div[class*="sidebar"] {
+  border-radius: 0px;
+}
+
+/* Search bar at top right, near min/max/Xout */
+[class*="toolbar"] div[class*="searchBar"] {
+  border-radius: 0px;
+  height: 27px;
+  transform: skew(3deg);
+  color: var(--text-on-dark-background);
+}
+
+[class*="toolbar"] div[class*="searchBar"]:hover {
+  --scale-factor: 1.03;
+  animation: erraticStretch 0.9s infinite;
+}
+
+/* "Search" placeholder text in search bar at top right */
+.public-DraftEditorPlaceholder-root {
+  font-family: 'fanransom';
+  letter-spacing: 1px;
+  font-size: 1.6em;
+  padding-top: 3px;
+}
+
+/* Search bar above friends list in DMs */
+button[class*="searchBarComponent"] {
+  border-radius: 0 !important;
+  transform: rotate(0deg) skewX(-6deg);
+  font-family: 'shoplifter';
+  font-size: 1.25em !important;
+  letter-spacing: 0px;
+}
+
+button[class*="searchBarComponent"]:hover {
+  --scale-factor: 1;
+  animation: erraticStretch 0.9s infinite;
+}
+
+/* The popup when you click on the above search bar */
+[class*="quickswitcher"] {
+  border-radius: 0px;
+  --rot-factor: 35;
+  --scale-factor: 1;
+  animation: jiggleNormalWithRotation 0.6s infinite;
+}
+input[aria-label="Quick switcher"] {
+  color: var(--text-on-white-background);
+}
+
+/* Targets the real search bar that appears when in friends tab, above the currently online users, probably targets others too */
+[class*="container"][class*="searchBar"] {
+  border-radius: 1px;
+  transform: skew(3deg);
+}
+[class*="container"][class*="searchBar"]:hover {
+  --scale-factor: 1.006;
+  animation: pulsate 0.6s infinite;
+}
+[class*="container"][class*="searchBar"] input[aria-label="Search"] {
+  background: unset; /* Prevent my other rules from affecting this guy's bg */
+  color: var(--text-on-dark-background);
+}
+
+/* add notification icon when someone dms you */
+[class*="lowerBadge"] {
+  background: url(https://alanmun.github.io/p5r-discord-theme/notification.gif);
+  filter: drop-shadow(0 0 0.5px black);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  transform: scaleX(-1) !important;
+  margin-bottom: -5px;
+  border-radius: 0;
+  height: 25px;
+  width: 9px;
+}
+
+/* Restyling the number of dms notification number */
+[class*="lowerBadge"]>div {
+  padding-top: 14px;
+  padding-right: 6px;
+  background: transparent !important;
+  transform: skewX(0deg) scaleX(-1.3) scaleY(1.3);
+  color: var(--text-on-dark-background);
+  font-family: 'shoplifter';
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+/* Targeting the Friends tab that appears to the right of "find or start a conversation" */
+section:not([aria-label="Channel header"]) {
+  background: var(--primary-alt) !important;
+}
+
+section:not([aria-label="Channel header"]) [class*="children"]{
+  font-family: 'system-and-popups';
+}
+
+/* Friends online All pending Suggestions Blocked Add Friend */
+section:not([aria-label="Channel header"]) [class*="children"] h1{
+  font-family: 'system-and-popups';
+}
+section:not([aria-label="Channel header"]) [class*="children"] [aria-label="Friends"] div{
+  border-radius: 1px;
+  transform: skewY(0.25deg) skewX(6deg);
+}
+section:not([aria-label="Channel header"]) div[aria-label="Add Friend"] {
+  background-color: var(--hp-green) !important;
+  border-radius: 2px;
+  border: 2px white solid;
+  transform: skewY(-0.75deg) skewX(-6deg);
+}
+section:not([aria-label="Channel header"]) div[aria-label="Add Friend"]:hover {
+  --scale-factor: 1;
+  animation: erraticStretch 0.8s infinite;
+}
+
+/* Restyle only the badges under blobContainers (non-folders), makes their notif sizes equal */
+/* Currently not helpful */
+/* div[class*="blobContainer"] [class*="lowerBadge"] {
+  transform: scaleX(-0.75) scaleY(0.75) !important;
+} */
+
+/* DM popup notification profile pics (when someone dms you) */
+.scroller-3X7KbA.none-1rXy4P.scrollerBase-1Pkza4 svg.svg-2ifYOU mask+mask+foreignObject {
+  mask: none;
+}
+
+/* Testing: remove ugly bg from notification popup ticker */
+div[class*="wrapper"] > svg > defs > rect {
+  visibility: hidden;
+}
+
+/* Dunno what this things deal is, its some strange box shadow looking edge near the chatbox. This rule blocks it from appearing, its ugly and looks like a glitch */
+.theme-dark [class*="form"]:before {
+  background: none !important;
+}
+
+/* Server list etc */
+div[aria-label="Servers"]>div{
+  padding: 5px 0 5px 0;
+  transform: scale(1.1);
+}
+
+div[aria-label="Servers"]> :nth-child(odd) div[class*="blobContainer"] > div > svg:hover {
+  animation: jiggleInverted 0.6s infinite;
+}
+div[aria-label="Servers"]> :nth-child(odd) div[class*="blobContainer"] > div > svg {
+  background: url('https://alanmun.github.io/p5r-discord-theme/spikyCircleMenuButton.svg');
+  background-size: 98%;
+  background-repeat: no-repeat;
+  background-position: 50% 100%;
+  width: 50px;
+  transform: rotate(6deg) scale(-1.2);
+}
+div[aria-label="Servers"]> :nth-child(odd) div[class*="blobContainer"] img {
+  transform: scale(-0.65) translateX(1px) translateY(-0.5px); /* Controls the size of the server icon inside spiky bubble */
+  border-radius: 100%;
+}
+
+div[aria-label="Servers"]> :nth-child(even) div[class*="blobContainer"] > div > svg:hover {
+  --scale-factor: 1;
+  animation: jiggleNormal 0.6s infinite;
+}
+div[aria-label="Servers"]> :nth-child(even) div[class*="blobContainer"] > div > svg {
+  margin-top: 3px;
+  width: 50px;
+  background: url('https://alanmun.github.io/p5r-discord-theme/spikyCircleMenuButton.svg');
+  background-size: 98%;
+  background-repeat: no-repeat;
+  background-position: 50% 100%;
+  transform: rotate(6deg) scale(1.2);
+}
+div[aria-label="Servers"]> :nth-child(even) div[class*="blobContainer"] img {
+  transform: scale(0.65) translateX(-1px); /* Controls the size of the server icon inside spiky bubble */
+  border-radius: 100%;
+}
+
+/* Affects folders */
+div[aria-label="Servers"]>[class*="wrapper"] div[class*="wrapper"] {
+  margin-top: 15px;
+  transform: skewX(3deg) rotate(-3deg);
+}
+div[aria-label="Servers"]>[class*="wrapper"] div[class*="wrapper"]:hover {
+  animation: jiggleFolder 0.6s infinite;
+}
+/* Same as above but need to be more specific to put a border */
+div[aria-label="Servers"]>[class*="wrapper"] div[class*="wrapper"] div[class*="closedFolderIconWrapper"] {
+  border: 2px solid #fff;
+}
+
+/* ul that contains each server in a folder */
+div[aria-label="Servers"]>[class*="wrapper"] ul {
+  height: auto !important;
+}
+
+/* Matches servers INSIDE folders */
+div[aria-label="Servers"]>[class*="wrapper"] ul div[class*="wrapper"] {
+  margin-top: 0px;
+  transform: rotate(6deg);
+}
+
+div[aria-label="Servers"]>[class*="wrapper"] svg foreignObject {
+  mask: none !important;
+  background: none;
+}
+
+/* Nuke radius on any server folder */
+div[aria-label="Servers"]>[class*="wrapper"] [class*="folderIconWrapper"] {
+  border-radius: 0;
+  background-color: transparent !important;
+}
+
+div[aria-label="Servers"]>[class*="wrapper"] div[aria-expanded="true"] {
+  background: transparent;
+}
+
+
+/* Direct Messages icon */
+div[aria-label="Direct Messages"] > div[class*="childWrapper"] {
+  background: rgba(0, 0, 0, 0) url("https://alanmun.github.io/p5r-discord-theme/im.png") no-repeat center / 120%;
+  background-color: transparent !important;
+}
+div[aria-label="Direct Messages"] > div[class*="childWrapper"]:hover {
+  animation: jiggleNormalWithRotation 1s infinite;
+}
+
+/* Direct Messages icon requires disable masking to remove rounded corners effect */
+/* TODO: Just this one is firing on the two icons at bottom of server browser side bar */
+div[class*="listItemWrapper"] > div[class*="wrapper"] > svg > foreignObject {
+  mask: none;
+}
+/* Hide the wumpus thing so it doesn't occlude IM icon */
+div[class*="listItemWrapper"] > div[class*="wrapper"] > svg > foreignObject svg {
+  visibility: hidden;
+}
+
+/* DM people list */
+[class*="interactive"] {
+  border-radius: 0px;
+}
+
+div[class*="members"] > div {
+  color: var(--text-on-dark-background);
+}
+
+div[aria-label="Members"]>h2[class*="membersGroup"]:nth-child(even)>span {
+  font-family: var(--header-font-family);
+  font-size: 0.80em;
+  color: #000;
+  background: #fff;
+  letter-spacing: 2px;
+  border-radius: 2px;
+  transform: skewX(9deg);
+  padding-left: 3px;
+  padding-right: 3px;
+  display: inline-block;
+}
+
+div[aria-label="Members"]>h3.membersGroup-2eiWxl:nth-child(odd)>span {
+  font-family: var(--header-font-family);
+  font-size: 0.80em;
+  color: #000;
+  background: #fff;
+  letter-spacing: 2px;
+  border-radius: 2px;
+  transform: skewX(-9deg);
+  padding-left: 3px;
+  padding-right: 3px;
+  display: inline-block;
+}
+
+/* Left Column */
+
+/* This enforces primary coloring back onto server bar */
+.scroller-3X7KbA {
+  background: var(--p5-primary) !important;
+}
+
+.guilds-2JjMmN .tutorialContainer-1pL9QS .wrapper-3kah-n .childWrapper-1j_1ub svg {
+  display: none;
+}
+
+.guilds-2JjMmN .tutorialContainer-1pL9QS .wrapper-3kah-n.selected-bZ3Lue .childWrapper-1j_1ub {
+  color: #fff;
+}
+
+.guilds-2JjMmN .lowerBadge-3WTshO {
+  background: var(--theme);
+}
+
+.guilds-2JjMmN .lowerBadge-3WTshO .numberBadge-37OJ3S {
+  background: var(--theme) !important;
+  color: #fff;
+}
+
+.guilds-2JjMmN .folderIconWrapper-226oVY {
+  background: rgba(10, 10, 10, 0.5) !important;
+}
+
+.guilds-2JjMmN .circleIconButton-jET_ig {
+  background: #fff;
+}
+
+.guilds-2JjMmN .circleIconButton-jET_ig svg {
+  color: var(--hp-green);
+}
+
+.guilds-2JjMmN .circleIconButton-jET_ig:hover {
+  background: var(--mp-pink);
+}
+
+.guilds-2JjMmN .circleIconButton-jET_ig:hover svg {
+  color: #fff;
+}
+
+.bar-30k2ka {
+  background: #000;
+  border-radius: 2px;
+  box-shadow: 0 0 0 2px #fff, -2px -1px 0 2px #fff;
+}
+
+/* Popout Above Guilds */
+
+.menu-3sdvDG .scroller-3BxosC {
+  background: #000;
+  border-radius: 2px;
+  border: 2px solid #fff;
+}
+
+.menu-3sdvDG .scroller-3BxosC .item-1tOPte {
+  color: #fff;
+}
+
+.menu-3sdvDG .scroller-3BxosC .item-1tOPte.focused-3afm-j {
+  background: var(--theme);
+}
+
+.menu-3sdvDG .scroller-3BxosC .item-1tOPte:nth-child(2n + 2) .iconContainer-2-XQPY svg {
+  color: var(--theme) !important;
+}
+
+/* Friends Page Main Area */
+
+[class*="peopleList"] [class*="peopleListItem"] [class*="avatar"] :not([class*="userInfo"]) svg foreignObject {
+  mask: url("https://alanmun.github.io/p5r-discord-theme/im.png");
+}
+
+[class*="peopleList"] [class*="peopleListItem"] [class*="actions"] [aria-label="Message"] {
+  border-radius: 50%;
+  background: var(--p5-blue);
+  color: #fff;
+}
+[class*="peopleList"] [class*="peopleListItem"] [class*="actions"] [aria-label="Message"]:hover {
+  --scale-factor: 0.1;
+  animation: erraticStretch 0.8s infinite;
+}
+
+
+[class*="peopleList"] [class*="peopleListItem"] [class*="actions"] [aria-label="More"] {
+  border-radius: 50%;
+  background: var(--mp-pink);
+  color: #fff;
+}
+[class*="peopleList"] [class*="peopleListItem"] [class*="actions"] [aria-label="More"]:hover {
+  --scale-factor: 0.1;
+  animation: erraticStretch 0.8s infinite;
+}
+
+/* Now Playing */
+
+.nowPlayingColumn-2sl4cE {
+  background: #000;
+}
+
+.nowPlayingColumn-2sl4cE .itemCard-v9viV7 {
+  background: var(--primary-alt);
+  border: 2px solid #fff;
+  border-radius: 2px;
+  transform: skew(-3deg);
+}
+
+.nowPlayingColumn-2sl4cE .itemCard-v9viV7:nth-child(even) {
+  transform: skew(3deg);
+}
+
+.nowPlayingColumn-2sl4cE .itemCard-v9viV7 .section-2gLsgF {
+  background: #101010;
+}
+
+/* Main Message Area */
+
+/* .chat-2ZfjoI {
+  background: var(--primary-dark);
+} */
+
+.chat-2ZfjoI .title-3qD0b- {
+  background: var(--primary-alt);
+}
+
+.emptyChannelIcon-1YdEz2 {
+  border-radius: 0;
+  background-color: #000;
+  border-radius: 2px;
+  border: 2px solid #fff;
+  transform: rotate(-4deg);
+}
+
+.emptyChannelIcon-1YdEz2 svg {
+  color: #000 !important;
+}
+
+/* Messages */
+
+/* Profile picture box inside of any chat (dm or server) */
+/* li .header-2jRmjb {
+  background-image: url('https://alanmun.github.io/p5r-discord-theme/PFP.svg');
+  background-repeat: no-repeat;
+  background-position: -150px 0px;
+  z-index: 5;
+  overflow: visible;
+} */
+li:nth-child(odd) .message-2CShn3 {
+  margin-left: 2%;
+}
+
+li:nth-child(odd) .message-2CShn3 .avatar-2e8lTP {
+  /* left: -2%; */
+  border-radius: 0;
+
+  border: 2px solid #fff;
+  z-index: 1;
+  overflow: visible;
+  /* This was set by original author, but seemingly no effect */
+  transform: rotate(-2deg) skew(3deg);
+}
+
+/* ^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_ */
+li:nth-child(even) .message-2CShn3 {
+  margin-left: 2%;
+}
+
+li:nth-child(even) .message-2CShn3 .avatar-2e8lTP {
+  /* left: -2%; */
+  border-radius: 0;
+
+  border: 2px solid #fff;
+  transform: rotate(2deg) skew(-3deg);
+  overflow: visible;
+  /* This was set by original author, but seemingly no effect */
+}
+
+.message-2CShn3 .markup-eYLPri {
+  font-family: "Varela Round", sans-serif;
+  font-size: 0.85em;
+}
+
+.message-2CShn3 .markup-eYLPri span:hover {
+  background: #fff;
+  color: #000;
+}
+
+.contents-2MsGLg .markup-eYLPri>span {
+  color: #fff;
+}
+
+.contents-2MsGLg .markup-eYLPri>span>span.highlight {
+  background: var(--p5-primary);
+  color: #fff;
+}
+
+/* Message Hover Buttons */
+
+/* Idea: color these buttons? */
+/* aria-label="Add Reaction" */
+
+.message-2CShn3 .buttons-3dF5Kd .wrapper-2vIMkT {
+  border-radius: 0;
+  overflow: none;
+}
+
+.message-2CShn3 .buttons-3dF5Kd .wrapper-2vIMkT .button-3bklZh {
+  border-radius: 2px;
+  background: #000;
+  color: #fff;
+  border: 2px solid #fff;
+  transform: rotate(4deg);
+  padding: 1px;
+}
+
+.message-2CShn3 .buttons-3dF5Kd .wrapper-2vIMkT .button-3bklZh:nth-child(even) {
+  transform: rotate(-4deg);
+}
+
+.message-2CShn3 .buttons-3dF5Kd .wrapper-2vIMkT .button-3bklZh:hover {
+  background: var(--theme);
+}
+
+/* .theme-dark .message-2CShn3 {
+  background: var(--primary-dark);
+  box-shadow: none;
+} */
+
+.theme-dark .message-2CShn3 .disableInteraction-286MMw {
+  background: var(--primary-dark);
+}
+
+.lookFilled-1Gx00P.colorGreen-29iAKY {
+  background: var(--hp-green);
+}
+
+/* Targets all usernames and "Friends" + "Nitro" at top of DM list */
+div[class*="avatarWithText"] div[class*="nameAndDecorators"] div[class*="name"] {
+  font-family: "fanransom";
+  font-size: 1.3em;
+  letter-spacing: 2px;
+  line-height: 100%;
+  margin-top: 5px;
+}
+
+/* Overrides first class with more specificity so we don't apply font to every username */
+div[class*="nameAndDecorators"] div[class*="name"]>[class*="overflow"] {
+  font-family: 'personified';
+  font-size: initial;
+  line-height: 120%;
+  letter-spacing: normal;
+}
+
+/* Message Requests, which occassionally appears under Friends and Nitro */
+a[data-list-item-id="private-channels-uid_23___messageRequests"] .name-2m3Cms {
+  font-size: 1.3em;
+  letter-spacing: 1px;
+  white-space: normal;
+}
+
+/* DIRECT MESSAGES header text, just above list of people to dm */
+h2.privateChannelsHeaderContainer-1UWASm {
+  height: 50px;
+  margin-left: -7px;
+}
+
+/* The actual span inside of the above DM header */
+h2.privateChannelsHeaderContainer-1UWASm>span {
+  font-family: "fanransom";
+  font-size: 1.2em;
+  font-weight: lighter;
+  color: #fff;
+  background: var(--p5-primary);
+  line-height: 29px;
+  letter-spacing: 1px;
+  text-align: center;
+  transform: skew(12deg);
+  /* border: rgb(200, 200, 200) 0.5px; 
+  border-style: solid; */
+}
+
+/* Restyling friends list, underneath DM header */
+ul[aria-label="Direct Messages"]>h2~li.channel-1Shao0.container-32HW5s:nth-child(odd) {
+  border-radius: 0;
+  border: solid transparent;
+  border-top-width: 0.5px;
+  border-right-width: 0.5px;
+  border-bottom-width: 1px;
+  border-left-width: 2px;
+  margin-right: 7px;
+  transform: skewX(9deg);
+}
+
+ul[aria-label="Direct Messages"]>h2~li.channel-1Shao0.container-32HW5s:nth-child(odd) a {
+  transform: skewX(-9deg);
+}
+
+ul[aria-label="Direct Messages"]>h2~li.channel-1Shao0.container-32HW5s:nth-child(even) {
+  border-radius: 0;
+  border: solid transparent;
+  border-top-width: 1.5px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  margin-left: 12px;
+  margin-right: 4px;
+  transform: skewX(-6deg);
+}
+
+ul[aria-label="Direct Messages"]>h2~li.channel-1Shao0.container-32HW5s:nth-child(even) a {
+  transform: skewX(6deg);
+}
+
+/* Date dividers */
+
+[class*="divider"] {
+  /* border-color: rgba(255, 255, 255, 0.7); */
+  border-color: #333;
+}
+
+/* Sets the font for actual date dividers in chats */
+[class*="divider"] span:not([class*="endCap"]) {
+  font-family: "New P5";
+  font-size: 0.85em;
+  color: #000;
+  background: #fff;
+  letter-spacing: 3px;
+  border-radius: 2px;
+  border: 2px solid #000;
+  padding: 5px;
+  transform: skew(6deg);
+}
+
+/* This is the little ticker thing to the right of the most recent date divider, when a msg was new */
+[class*="divider"] span[class*="endCap"] {
+  font-family: "New P5";
+  font-size: 0.6em;
+  background: var(--p5-blue-hovered);
+  letter-spacing: 1px;
+  border-radius: 0 1px 1px 0;
+  line-height: 50%;
+}
+[class*="divider"] span[class*="endCap"] path {
+  color: var(--p5-blue-hovered);
+  fill: var(--p5-blue-hovered);
+}
+
+[class*="messageContent"] {
+  color: #fff;
+}
+
+/* "Events" when clicked into a server */
+ul[aria-label="Channels"] li[class*="wrapper"] [class*="name"] {
+  font-family: "fanransom";
+  font-size: 1.3em;
+  letter-spacing: 2px;
+  line-height: 100%;
+  margin-top: 5px;
+}
+
+/* User Message Area */
+
+/* The mention suggestion box that popsup when you type @... */
+[class*="autocompleteAttached"] {
+  border-radius: 1px;
+  background: black !important;
+  border: 0px solid white;
+  /*TODO: anim for this would be sweet since its a popup  */
+}
+[class*="autocompleteAttached"] [class*="base"] {
+  border-radius: 1px;
+}
+
+/* ? chatbox glitches out when massive amount of text dumped, but I've decided to ignore this because it requires you to go out of character limit even for nitro users, so who cares */
+
+/* "Blah is typing... */
+[class*="typing"][class*="base"] {
+  color: var(--text-on-dark-background);
+}
+
+input, textarea, [contenteditable] {
+  caret-color: black; /* Sets the caret color to black */
+}
+
+/* chatbox */
+[class*="scrollableContainer"] {
+  overflow-y: hidden;
+  padding-right: 8px;
+  border-radius: 0;
+}
+
+/* Seems to be a black element behind the chatbox, which should have the skew instead of chatbox */
+[class*="channelTextArea"] {
+  transform: skewX(-4deg);
+}
+
+/* Holds the buttons inside of the chatbox and placeholder text */
+[class*="scrollableContainer"] [class*="inner"] {
+  transform: skewX(4deg);
+  /* This counter-skew unskews the above skew for chatbox buttons, which was done for the overall chatbox */
+}
+
+/* Affects any text user has written into the chatbox */
+[class*="scrollableContainer"] [class*="inner"] [class*="markup"] span {
+  color: #000;
+}
+
+/* These two affect just inline code formatted text using `backticks` */
+[class*="markup"] span:is([class*="before_inlineCode"], [class*="inlineCode"], [class*="after_inlineCode"]) {
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Placeholder text for chatbox / message box */
+[class*="placeholder"] {
+  font-family: "fanransom";
+  font-size: 1.5em;
+  line-height: 25px;
+  letter-spacing: 2px;
+  font-weight: bolder;
+}
+
+/* The add attachment button */
+path[class*="attachButtonPlus"] {
+  fill: crimson;
+}
+
+/* These cover all of the hitboxes for hovering add attachment chatbox */
+button[class*="attachButton"]:hover path {
+  fill: var(--background-primary) !important;
+}
+path[class*="attachButtonPlus"]:hover {
+  fill: var(--background-primary) !important;
+}
+
+/* Buttons inside of and to the right in the message edit box */
+[class*="buttons"] button[aria-label="Send a gift"] svg {
+  color: var(--mp-pink);
+}
+
+[class*="buttons"] button[aria-label="Open GIF picker"] svg {
+  color: var(--hp-green);
+}
+
+[class*="buttons"] button[aria-label="Open sticker picker"] svg {
+  color: var(--p5-blue);
+}
+
+[class*="buttons"] button[aria-label="Select emoji"] div[class*="sprite"] {
+  filter: unset !important;
+}
+
+/* When editing a message, the helper text that appears (escape to cancel * enter to save) */
+[class*="operations"] {
+  font-family: "varela round";
+}
+
+.placeholder-1_mJY1 {
+  font-family: "Varela Round", sans-serif;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.9em;
+}
+
+.channelTextArea-1VQBuV .buttons-uaqb-5 button:hover svg path {
+  fill: var(--theme);
+}
+
+.channelTextArea-1VQBuV .slateTextArea-27tjG0 {
+  caret-color: var(--theme);
+}
+
+/* TODO: Almost there, but scaling problems. things just don't scale the same amts when window resized */
+/* The new messages are available popup */
+/* [class*="newMessagesBar"] {
+  border-radius: 1px;
+  background: #101010 url("https://alanmun.github.io/p5r-discord-theme/notification.gif") no-repeat;
+  background-position-y: 3px;
+  background-position-x: 10px;
+  background-size: 1.4%;
+  box-shadow: 0 0 0 2px #fff;
+  top: 2px;
+  flex-direction: column;
+  display: inline-flex;
+  width: 50%;
+  left: 30%;
+  right: 0;
+}
+[class*="newMessagesBar"] button[aria-label="Jump to last unread message"] {
+  overflow: visible;
+  font-family: "system-and-popups";
+  transform: translateY(15%);
+} */
+/* This is the "Mark as read" button */
+/* [class*="newMessagesBar"] button:not([aria-label="Jump to last unread message"]) {
+  transform: translateX(140%) translateY(-85%);
+  background: transparent;
+} */
+/* TODO end */
+
+/* Embedded content's description text */
+[class*="embedDescription"] {
+  color: #fff;
+}
+
+/* Unread mentions in the Discord server list (the NEW bubble) */
+[class*="unreadMentionsBar"] {
+  border-radius: 1px;
+  opacity: 0.95;
+  width: 70%;
+  height: 80%;
+  left: 15%;
+  top: 15%;
+  background-color: var(--p5-blue-hovered);
+}
+
+/* Mention override cause it's too hard to read as is */
+.slateTextArea-27tjG0 .mention {
+  background: var(--mp-pink) !important;
+  color: #fff;
+}
+
+/* Channel Column & Below */
+
+.flowerStarContainer-3zDVtj .childContainer-1wxZNh svg path {
+  fill: #fff;
+}
+
+.containerDefault-YUSmu3 {
+  font-family: "Varela Round", sans-serif;
+}
+
+.containerDefault-YUSmu3 .iconContainer-21RCa3 {
+  background: #000;
+  border-radius: 2px;
+  /* border: 1px solid #fff; */
+  box-shadow: 0 0 0 2px #fff;
+  transform: skewX(4deg);
+}
+
+.containerDefault-YUSmu3:nth-child(even) .iconContainer-21RCa3 {
+  transform: skewX(-4deg);
+}
+
+.containerDefault-YUSmu3 .iconContainer-21RCa3 svg {
+  color: #fff !important;
+}
+
+.containerDefault-YUSmu3:hover .iconContainer-21RCa3 {
+  background: var(--theme);
+}
+
+.containerDefault-YUSmu3:nth-child(2n + 1):hover .iconContainer-21RCa3 {
+  background: #fff;
+}
+
+.containerDefault-YUSmu3:nth-child(2n + 1):hover .iconContainer-21RCa3 svg {
+  color: var(--theme) !important;
+}
+
+.containerDefault-YUSmu3.selected-2TbFuo .iconContainer-21RCa3 {
+  background: var(--theme);
+}
+
+.containerDefault-YUSmu3.selected-2TbFuo .iconContainer-21RCa3 svg {
+  color: #fff !important;
+}
+
+.containerDefault-YUSmu3.selected-2TbFuo .content-1gYQeQ {
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.panels-3wFtMD .flex-2S1XBF .button-12Fmur {
+  transform: rotate(2deg);
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 2px;
+}
+
+.panels-3wFtMD .flex-2S1XBF .button-12Fmur:nth-child(even) {
+  transform: rotate(-4deg);
+}
+
+.panels-3wFtMD .flex-2S1XBF .button-12Fmur:hover {
+  background: #fff;
+  color: var(--theme);
+}
+
+/* For fun... */
+
+.avatarSpeaking-2IGMRN {
+  box-shadow: inset 0 0 0 2px var(--hp-green),
+    inset 0 0 0 3px var(--background-secondary);
+}
+
+/* Activity Panel */
+
+.activityPanel-28dQGo .body-GmmuPm {
+  position: relative;
+  background: var(--theme);
+  border: 2px solid #fff;
+  transform: skewY(2deg);
+}
+
+.activityPanel-28dQGo .body-GmmuPm svg {
+  color: #fff;
+}
+
+.activityPanel-28dQGo .body-GmmuPm::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid #fff;
+  left: 90%;
+  top: 100%;
+}
+
+/* Some text appears black when it shouldn't be. If you still see issues, delete first two class? */
+.defaultColor-1EVLSt.lineClamp2Plus-2SCQmH.text-sm-normal-AEQz4v span {
+  color: ghostwhite;
+}
+
+/* Right Members Area */
+
+.member-3-YXUe .name-uJV0GL {
+  font-weight: 600;
+}
+
+/* User Popout */
+
+[class*="userProfileInner"][class*="userPanelInner"],
+[class*="userPopoutInner"][class*="userProfileInner"] {
+  background-image: url("https://alanmun.github.io/p5r-discord-theme/p5star.gif");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0)
+}
+
+[class*="userProfileOuterUnthemed"][class*="userPopoutOuter"],
+[class*="userProfileOuterThemed"][class*="userProfileOuter"] {
+  padding: 0px;
+  border-radius: 1px;
+}
+
+/* TODO: Need to control the transparent bg in user popouts */
+[class*="userPopoutOverlayBackground"] {
+  opacity: 1 !important;
+}
+
+[class*="profileBadges"][class*="containerWithContent"][class*="container"] {
+  opacity: 1 !important;
+}
+
+/* Quick DM in a user popout */
+input[class*="inputDefault"][class*="input"][class*="messageInput"] {
+  background: var(--text-on-dark-background);
+}
+
+/* User profile as displayed in My Account within User Settings */
+[class*="accountProfileCard"] {
+  background-image: url("https://alanmun.github.io/p5r-discord-theme/p5star.gif");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0)
+}
+
+/* New Server */
+
+/* Code broke, but this is way too general */
+/* [class*="container"] {
+  background: #000;
+  border: 2px solid #fff;
+  transform: skewX(-1deg);
+} */
+
+/* [class*="container"] [class*="flex"] {
+  background: #000;
+  border-top: 0;
+} */
+
+[class*="container"] [class*="colorHeaderPrimary"] {
+  color: var(--theme);
+  background: #fff;
+  padding: 5px 15px;
+  border: 2px solid var(--theme);
+  border-radius: 2px;
+  transform: skewX(2deg);
+}
+
+[class*="container"] .container-UC8Ug1 .colorStandard-2KCXvj,
+[class*="container"] [class*="flex"] .colorStandard-2KCXvj {
+  color: #fff;
+}
+
+[class*="container"] .container-UC8Ug1 .colorStandard-2KCXvj::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 6px);
+  right: 25px;
+  width: 11px;
+  height: 11px;
+
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg);
+}
+
+[class*="container"] .container-UC8Ug1 .arrow-hynWUl {
+  display: none;
+  color: #fff !important;
+  /* opacity: 0; */
+}
+
+[class*="container"] [class*="flex"] .footerButton-ayFTfX {
+  background: var(--mp-pink);
+}
+
+[class*="container"] [class*="flex"] .footerButton-ayFTfX:hover {
+  background: var(--hp-green);
+}
+
+/* Big Profile Views? */
+
+/* Nickname Popup */
+.focusLock-Ns3yie .root-1gCeng {
+  border-radius: 2px;
+  border: 2px solid #fff;
+}
+
+.focusLock-Ns3yie .modal-2VIBV8 {
+  background: #000;
+}
+
+.focusLock-Ns3yie,
+.focusLock-Ns3yie .modal-2VIBV8 .close-hZ94c6 {
+  top: 0;
+}
+
+.focusLock-Ns3yie form {
+  background: #000;
+}
+
+.focusLock-Ns3yie form .title-3sZWYQ {
+  display: inline-flex;
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: 2px;
+  border: 2px solid var(--theme);
+  color: #000;
+  flex: 0 0 auto;
+  margin: 5px auto;
+  transform: skewX(4deg);
+}
+
+.focusLock-Ns3yie form .input-cIJ7To {
+  background: #fff;
+  color: #000;
+  border-radius: 2px;
+}
+
+.focusLock-Ns3yie form .input-cIJ7To::placeholder {
+  color: var(--theme);
+}
+
+.focusLock-Ns3yie form .input-cIJ7To:focus {
+  border-color: var(--theme);
+}
+
+.focusLock-Ns3yie form .reset-2ikQ30 {
+  color: var(--mp-pink);
+}
+
+.focusLock-Ns3yie .item-26Dhrx,
+.focusLock-Ns3yie .item-26Dhrx .info-3LOr12 {
+  background: #000;
+}
+
+.focusLock-Ns3yie .item-26Dhrx:hover,
+.focusLock-Ns3yie .item-26Dhrx:hover .info-3LOr12 {
+  background: rgba(10, 10, 10, 0.8);
+}
+
+.focusLock-Ns3yie .item-26Dhrx .radioBar-bMNUI->svg path,
+.focusLock-Ns3yie .item-26Dhrx .radioBar-bMNUI->svg circle {
+  fill: var(--theme);
+}
+
+.focusLock-Ns3yie [class*="flex"] {
+  background: #000;
+}
+
+.focusLock-Ns3yie [class*="flex"] .button-38aScr {
+  background: #000;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  margin: 0 5px;
+  transform: skewX(-2deg);
+}
+
+/* These cover a lot of the settings buttons */
+button[class*="sizeSmall"][class*="grow"] {
+  background: var(--theme) !important;
+  color: var(--text-on-dark-background) !important;
+  border-radius: 1px;
+}
+button[class*="sizeSmall"][class*="grow"]:hover {
+  background: #fff !important;
+  color: var(--p5-system) !important;
+}
+
+/* Notification Settings */
+
+.focusLock-Ns3yie .content-1LAB8Z {
+  background: #000;
+}
+
+/* AKA badge, similar to NEW badge */
+[class*="akaBadge"] {
+  background: transparent !important;
+}
+
+/* Input text boxes (for example the boxes that appear when editing user profile for display name and pronouns) */
+input[class*="input"] {
+  border-radius: 1px;
+  background: var(--header-primary);
+  color: var(--text-on-white-background);
+}
+
+/* Voice */
+
+/* .slider-1PF9SW .bar-2Qqk5Z {
+  background: #fff;
+}
+
+.slider-1PF9SW .barFill-23-gu- {
+  background: var(--p5-blue);
+}
+
+.slider-1PF9SW .grabber-3mFHz2 {
+  background: var(--p5-blue);
+} */
+
+/* Everyone popup */
+
+.theme-dark .everyonePopout-nEbJY3 {
+  background: var(--theme);
+}
+
+.theme-dark .everyonePopout-nEbJY3 .button-1VQp89 {
+  color: #fff;
+  border-color: #fff;
+}
+
+.theme-dark .everyonePopout-nEbJY3 .colorStandard-2KCXvj {
+  color: #fff;
+}
+
+.theme-dark .everyonePopout-nEbJY3 .lookFilled-1Gx00P {
+  background: #fff;
+  color: var(--theme);
+}
+
+/* File Upload Popup */
+
+.theme-dark .uploadModal-2ifh8j {
+  background: #000;
+  box-shadow: 0 0 0 2px #fff;
+  border-radius: 2px;
+  transform: skewY(-1deg);
+}
+
+.theme-dark .uploadModal-2ifh8j .inner-3nWsbo {
+  background: #000;
+}
+
+.theme-dark .uploadModal-2ifh8j .inner-3nWsbo .icon-kyxXVr {
+  border-radius: 2px;
+  box-shadow: 0 0 0 2px #fff;
+  transform: skewX(2deg);
+}
+
+.theme-dark .uploadModal-2ifh8j .inner-3nWsbo .description-2ug5H_ {
+  background: var(--theme);
+  border-radius: 2px;
+  box-shadow: 0 0 0 2px #fff;
+  transform: skewX(-5deg) scale(0.92);
+  padding: 5px !important;
+  margin: 10px 0;
+}
+
+.theme-dark .uploadModal-2ifh8j .inner-3nWsbo .channelTextAreaUpload-3t7EIx .scrollableContainer-2NUZem {
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 0 2px var(--theme);
+}
+
+.theme-dark .uploadModal-2ifh8j .footer-3mqk7D {
+  background: #000;
+  box-shadow: none;
+}
+
+.theme-dark .uploadModal-2ifh8j .footer-3mqk7D .button-38aScr {
+  border-radius: 2px;
+  background: #fff;
+  color: var(--theme);
+  margin: 0 5px;
+  box-shadow: 0 0 0 2px var(--theme);
+}
+
+.theme-dark .uploadModal-2ifh8j .footer-3mqk7D .inputDefault-3JxKJ2:checked+.checkbox-1ix_J3 {
+  border-color: var(--mp-pink) !important;
+}
+
+/* todo: what does this do lol  [class*=""] */
+.theme-dark [class*="uploadModal"] [class*="footer"] [class*="inputDefault"]:checked+[class*="checkbox"] svg path {
+  fill: var(--mp-pink) !important;
+}
+
+.theme-dark [class*="uploadModal"] [class*="footer"] [class*="button"]:hover {
+  background: var(--mp-pink);
+  color: #fff;
+  box-shadow: 0 0 0 2px #fff;
+}
+
+.theme-dark .uploadModal-2ifh8j .footer-3mqk7D .button-38aScr[type="submit"]:hover {
+  background: var(--theme);
+  color: #fff;
+}
+
+
+/* Tags */
+
+.botTag-3W9SuW,
+.bot-2Fta1w,
+.botTag-1un5a6 {
+  background: var(--mp-pink);
+}
+
+.botTag-3W9SuW span,
+.bot-2Fta1w span,
+.botTag-1un5a6 span {
+  color: #fff;
+}
+
+.botTagVerified-1klIIt {
+  color: #fff;
+}
+
+/* Animations */
+
+/* TODO: animation that stretches corners of an element erratically like in p5 */
+@keyframes erraticStretch {
+
+  0%,
+  100% {
+    transform: scaleX(1) scaleY(1.05) skew(calc(var(--scale-factor) * 3deg));
+  }
+
+  25% {
+    transform: scaleX(1.03) scaleY(1) skewX(calc(var(--scale-factor) * 9deg)) skewY(calc(var(--scale-factor) * -0.5deg));
+  }
+
+  50% {
+    transform: scaleX(0.99) scaleY(1.05) skewX(calc(var(--scale-factor) * 9deg));
+  }
+
+  75% {
+    transform: scaleX(1.0) scaleY(1.1) skewX(calc(var(--scale-factor) * 3deg)) skewY(calc(var(--scale-factor) -0.5deg));
+  }
+}
+
+
+@keyframes erraticStretchQuickSwitcher {
+
+  0%,
+  100% {
+    transform: scaleX(1) scaleY(1.05) skew(calc(var(--scale-factor) * 3deg));
+  }
+
+  25% {
+    transform: scaleX(1.03) scaleY(1) skewX(calc(var(--scale-factor) * 9deg)) skewY(calc(var(--scale-factor) * -0.5deg));
+  }
+
+  50% {
+    transform: scaleX(0.99) scaleY(1.05) skewX(calc(var(--scale-factor) * 9deg));
+  }
+
+  75% {
+    transform: scaleX(1.0) scaleY(1.1) skewX(calc(var(--scale-factor) * 3deg)) skewY(calc(var(--scale-factor) -0.5deg));
+  }
+}
+
+/* Zooms in and out a tiny bit */
+@keyframes pulsate {
+
+  0%,
+  100% {
+    transform: scaleX(1) scaleY(1) skew(3deg);
+  }
+
+  50% {
+    transform: scaleX(calc(var(--scale-factor) * 1.003)) scaleY(calc(var(--scale-factor) * 1.01)) skew(3deg);
+  }
+}
+
+/* Normal and inverted jiggle, depending on odd or even server */
+@keyframes jiggleNormal {
+
+  0%,
+  100% {
+    transform: rotate(3deg) scale(calc(var(--scale-factor) * 1.35));
+  }
+
+  50% {
+    transform: rotate(-3deg) scale(calc(var(--scale-factor) * 1.35));
+  }
+}
+
+@keyframes jiggleInverted {
+
+  0%,
+  100% {
+    transform: rotate(3deg) scale(-1.35);
+  }
+
+  50% {
+    transform: rotate(-3deg) scale(-1.35);
+  }
+}
+
+@keyframes jiggleFolder {
+
+  0%,
+  100% {
+    transform: skewX(4deg) rotate(-3deg) scale(1);
+  }
+
+  50% {
+    transform: skewX(4deg) rotate(3deg) scale(1);
+  }
+}
+
+/* adjust rotation as well */
+@keyframes jiggleNormalWithRotation {
+
+  0%,
+  100% {
+    transform: rotate(-.75deg) scale(1.05);
+  }
+
+  50% {
+    transform: rotate(.75deg) scale(1.07);
+  }
+}
